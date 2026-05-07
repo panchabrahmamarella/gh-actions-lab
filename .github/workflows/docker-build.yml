@@ -1,0 +1,20 @@
+name: Docker build pipeline
+
+on: workflow_dispatch
+
+jobs:
+  docker_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Verify Docker
+        run: docker --version
+
+      - name: Build Docker Image
+        run: docker build -t python-demo-app:v1 .
+
+      - name: Show docker images
+        run: docker images
