@@ -1,0 +1,29 @@
+name: First Workflow
+
+on:
+  push:
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Print Message
+        run: echo "Hello from GitHub Actions"
+
+      - name: Linux Commands
+        run: |
+          echo "Current User:"
+          whoami
+
+          echo "Current Directory:"
+          pwd
+
+          echo "System Info:"
+          uname -a
+
+          echo "Files:"
+          ls -la
