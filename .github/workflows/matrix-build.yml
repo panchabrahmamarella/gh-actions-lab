@@ -1,0 +1,29 @@
+name: Matrix Build Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix_test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Show Python Version
+        run: python --version
+
+      - name: Run Test Script
+        run: |
+          echo "Running on Python version:"
+          python --version
